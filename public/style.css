@@ -1,0 +1,179 @@
+* {
+    font-family: Arial, Helvetica, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+#logo {
+    width: 350px;
+    margin: 20px;
+    
+}
+
+
+
+header, footer, #search-form, .container {
+    /* 4 dòng dưới có tác dụng làm cho logo, h1 và search bar thẳng hàng và căn giữa  */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+}
+
+header {
+    background-color: #2e51a2;
+}
+
+#search-form {
+    margin-bottom: 20px;
+    width: 100vw;
+    background-color: #2e51a2;
+}
+
+a {
+    margin: 0;
+}
+
+h1 {
+    margin-top: 0;
+    margin-bottom: 15px;
+}
+
+
+#search-btn, #search {
+    border-radius: 5px;
+    border: none;
+    height: 40px;
+    
+}
+
+#search {
+    margin-bottom: 15px;
+    padding: 0 20px;
+    width: 50%;
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+
+#search-btn {
+    width: 100px;
+    font-size: 1.25rem;
+    
+}
+
+.container {
+    padding: 50px;
+    background-color: #34495E;
+    margin: 0;
+    height: 60vh;
+    font-size: 3rem;
+    color: #FDFEFE;
+}
+
+#search-result {
+    display: flex;
+    flex-direction: column;
+    padding: 50px;
+    background-color: #34495E;
+    margin: 0;
+    min-height: 60vh
+}
+
+#search-animes {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+
+}
+
+#search-animes button {
+    border: none;
+    border-radius: 5px;
+    width: 220px;
+    margin: 15px;
+}
+
+
+#search-animes img {
+    width: 100%;
+    height: 330px;
+    border-radius: 5px 5px 0 0 ;
+}
+
+
+#search-animes h3 {
+    margin: 5px;
+}
+
+#anime {
+    display: grid;
+
+    /* grid template giúp ta xác định vị trí của từng thành phần trong grid, ở đây ta cho title chiếm 2 header, image chiếm 2 footer, data sẽ là nav còn synopsis sẽ là main, lưu ý là các vị trí header footer nav main chỉ là cách đặt tên và có thể cho nó tên bất kì */
+    grid-template: 
+    "header header" 
+    "footer nav" 
+    "footer main" 
+    / auto 3fr;
+
+    gap: 20px;
+    padding: 50px;
+    background-color: #34495E;
+    margin: 0;
+    min-height: 60vh
+}
+
+#anime-title, #anime-image, #anime-data, #anime-synopsis {
+    background-color: #2e51a2;
+    border-radius: 5px;
+    padding: 15px;
+
+}
+
+#anime-title {
+    /* title sẽ chiếm 2 vị trí header đã được định sẵn ở grid-template ngoài div có id là anime */
+    grid-area: header;
+    font-size: 2rem;
+}
+
+#anime-title h2{
+    
+    color: #FDFEFE;
+}
+
+#anime-title h3{
+    font-size: 1.5rem;
+    color: #B3B6B7;
+}
+
+#anime-image {
+    /* image sẽ chiếm 2 vị trí footer đã được định sẵn ở grid-template ngoài div có id là anime */
+    grid-area: footer;
+}
+
+#anime-data {
+    /* data sẽ chiếm 1 vị trí nav đã được định sẵn ở grid-template ngoài div có id là anime */
+    grid-area: nav;
+    list-style-type: none;
+    color: #FDFEFE;
+    
+}
+
+#anime-data span {
+    color: #B3B6B7;
+    font-size: 1.25rem;
+}
+
+#anime-synopsis {
+    /* data sẽ chiếm 1 vị trí main đã được định sẵn ở grid-template ngoài div có id là anime */
+    grid-area: main;
+    color: #FDFEFE;
+    font-size: 1.25rem;
+}
+
+footer {
+    background-color: #2e51a2;
+    height: 90px;
+    /* font-size: 1.25rem; */
+    color: #FDFEFE;
+}

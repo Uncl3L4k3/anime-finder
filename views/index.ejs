@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Anime Finder</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <header>
+        <a href="/">
+            <img id="logo" src="/images/logo.png" alt="logo">
+        </a>
+
+        <form id="search-form" action="./search" method="post">
+            <input id="search" type="text" placeholder="Anime title" name="search">
+            <input id="search-btn" type="submit" name="search-btn" value="Search">
+        </form>
+
+
+    </header>
+
+    <% if(locals.animeResult){ %>
+        <% if(animeResult==0){ %>
+            <div class="container">
+                <h1>Anime not Found</h1>
+            </div>
+            <% }else{ %>
+                <div id="search-result">
+                    <div id="search-animes">
+
+                        <% for(var i=0; i<animeResult.length; i++){ %>
+                            <form action="/anime" method="post">
+                                <input type="hidden" name="animeId" value="<%= animeResult[i].mal_id %>">
+                                <!-- đoạn input này để hidden chỉ để lấy dữ liệu name của anime mình click vào, trỏ tới mục này bằng name của nó và sẽ có giá trị là value -->
+
+                                <button type="submit" title="<%= animeResult[i].title %>">
+                                    <img src="<%= animeResult[i].images.jpg.image_url%>" alt="">
+                                    <h3>
+                                        <%= animeResult[i].title %>
+                                    </h3>
+                                </button>
+                            </form>
+                        <% } %>
+
+                    </div>
+                </div>
+                <% } %>
+
+    <% }else if(locals.myAnime){ %>
+        <div id="anime">
+            <div id="anime-title">
+                <h2><%= myAnime.title %></h2>
+                <h3><%= myAnime.title_synonyms %></h3>
+            </div>
+            
+            <img id="anime-image" src="<%= myAnime.images.jpg.image_url%>" alt="anime image">
+            <ul id="anime-data">
+                <li>Type: <span><%= myAnime.type %></span></li>
+                <li>Episode(s): <span><%= myAnime.episodes %></span></li>
+                <li>Status: <span><%= myAnime.status %></span></li>
+                <li>Aired: <span><%= myAnime.aired.string %></span></li>
+                <li>Duration: <span><%= myAnime.duration %></span></li>
+                <li>Rating: <span><%= myAnime.rating %></span></li>
+                <li>Genres: <span>
+                    <% for(var i=0; i<myAnime.genres.length; i++){ %>
+                        <%= myAnime.genres[i].name %>,
+                    <% } %>
+                </span></li>
+                <li>Score: <span><%= myAnime.score %></span></li>
+            </ul>
+
+            <div id="anime-synopsis">
+                <%= myAnime.synopsis %>
+            </div>
+        </div>
+    <% }else{ %>
+        <div class="container">
+            <h1>Search your Anime</h1>
+        </div>
+    <% } %>              
+
+    <footer>
+        <p>&copy; 2024, Dung Pham</p>
+    </footer>                        
+
+</body>
+
+</html>
