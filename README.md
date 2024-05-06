@@ -1,3 +1,2 @@
 # anime-finder
-npm i
-nodemon index.js
+npm i && nodemon index.js
